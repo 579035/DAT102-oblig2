@@ -9,22 +9,20 @@ public class ParentesSjekker {
 		ParentesStabel = new LenketStabel<Character>();
 	}
 	
-	
 	public boolean sjekkParenteser(String s) {
 		char[] charTab = s.toCharArray();
 		for (int i = 0; i < charTab.length; i++) {
 			if (erStartParentes(charTab[i])) {
 				ParentesStabel.push(charTab[i]);
 			} else if (erSluttParentes(charTab[i])) {
-				if (erParentesPar(ParentesStabel.peek(), charTab[i])) {
-					ParentesStabel.pop();
-				} else {
-					return false;
-				}
+					if (!ParentesStabel.isEmpty() && erParentesPar(ParentesStabel.peek(), charTab[i])) {
+						ParentesStabel.pop();
+					}
+					else {
+						return false;
+					}
 			}
-		
 		}
-		
 		return ParentesStabel.isEmpty();
 	}
 	public boolean erStartParentes (char c) {
@@ -33,7 +31,7 @@ public class ParentesSjekker {
 	public boolean erSluttParentes (char c) {
 		return c == '}' || c == ')' || c == ']' || c == '>';
 	}
-	boolean erParentesPar(char start, char slutt) {
+	public boolean erParentesPar(char start, char slutt) {
 		if (start == '{') {
 			return slutt == '}';
 		}
