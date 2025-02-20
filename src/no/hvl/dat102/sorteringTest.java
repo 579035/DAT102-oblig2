@@ -20,4 +20,25 @@ public class sorteringTest {
 			assertEquals(test[i], svar[i]);
 		}
 	}
+	@Test
+	void testQuickSort() {
+		Quick.sort(test);
+		for (int i = 0; i < test.length;i++) {
+			assertEquals(test[i], svar[i]);
+		}
+	}
+	@Test
+	void testMergeSort() {
+		Merge.sort(test);
+		for (int i = 0; i < test.length;i++) {
+			assertEquals(test[i], svar[i]);
+		}
+	}
+	@Test
+	void testSelectionSort() {
+		Selection.sort(test);
+		for (int i = 0; i < test.length;i++) {
+			assertEquals(test[i], svar[i]);
+		}
+	}
 }
